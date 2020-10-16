@@ -1,0 +1,10 @@
+﻿  p02.c
+C:\Users\bit\Source\Repos\Project3\p02.c(192,23): warning C4047: '함수': 'char'의 간접 참조 수준이 'char [15]'과(와) 다릅니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(192,15): warning C4024: 'print_result': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(198,6): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(230,22): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(233,14): warning C4244: 'return': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(238,25): warning C4244: '=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(240,14): warning C4244: 'return': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\bit\Source\Repos\Project3\p02.c(251,25): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+  Project3.vcxproj -> C:\Users\bit\Source\Repos\Project2\Debug\Project3.exe
