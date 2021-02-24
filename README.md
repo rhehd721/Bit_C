@@ -167,3 +167,155 @@ prt + 1 = ptr에 sizeof(*ptr)을 더한 값
 |무엇을 나타내거나 저장하는가?|메모리의 주소 값|메모리의 주소 값|
 |주솟값 변경이 가능한가?|가능하다|불가능하다.|
 arr[i] == *(arr + i)
+
+## 포인터 배열
+포인터로 이루어진 배열
+```c
+int main(){
+    int * int_arr[2];
+    int num1 = 10, num2 = 20;
+    arr[0] = &num1;
+    arr[1] = &num2;
+
+    prtinf("num1 : %d, num2 : %d", *int_arr[0], *int_arr[1]);
+
+    return 0;
+``` 
+
+## Call-by-value vs Call-by-reference
+1. Call-by-value : 단순히 값을 전달
+2. Call-by-reference : 주소 값을 전달
+
+## const
+```c
+int main(){
+    int num = 20;
+    const int * ptr = &num;
+    * ptr = 30; // error
+    * num = 40; // compile 성공
+    // const는 ptr가 가르키는 값의 변경을 막아준다.
+``` 
+
+## 다차원 배열
+```c
+int arr[3][5]; // 5개짜리 배열이 3개 존재
+```
+
+## 더블 포인터
+```c
+int num = 10;
+int * num_ptr = &num;
+int ** num_ptr_ptr = &num_ptr;
+// * num_ptr_ptr == ptr
+// *(*num_ptr_ptr) == num
+```
+
+## 배열 포인터 vs 포인터 배열
+arr[i] == *(arr + i)
+1. 배열 포인터 : n개의 배열을 바라보는 포인터
+    * ex. int (* arr_ptr)[n]
+2. 포인터 배열 : 포인터가 n개 있는 배열
+    * ex. int * arr_ptr[n]
+
+## Void
+존재하지 않는 형
+
+## int argc, char * argv[]
+1. int argc : argv의 길이
+2. char * argv[] : 프로그램 실행시 전달받은 인자 배열(단, 첫번째 인자는 프로그램 실행 경로)
+
+## standard stream
+1. stdin : 표준 입력 스트림 (키보드)
+2. stdout : 표준 출력 스트림 (모니터)
+3. stderr : 포준 에러 스트림 (모니터)
+
+## 문자 출력 : putchar, fputc
+1. int putchar(int c) : 매개변수로 들어온 문자 c를 standard output(표준출력)에 문자로 출력해주는 함수
+2. int fputc(int c, FILE * stream) : FILE * 가 가르키는 파일에 첫번째 인자를 넣어준다.
+
+## 문자 입력 : getchar, fgetc
+1. int getchar(void) : standard input(표준입력) 으로 부터 입력받은 문자를 반환하는 함수
+2. int fgetc(FILE * stream) : FILE * 가 가르키는 파일에서 문자를 읽어온다.
+
+## buffer
+데이터를 임시로 모아두는 메모리 공간
+
+## 구조체
+하나 이상의 변수를 묶어 새로운 자료형을 정의하는 도구
+```c
+struct Ex{
+    int num1;
+    int num2;
+    char name[10];
+};
+```
+
+구조체 초기화
+```c
+struct Ex person = {5, 10, "ho"};
+```
+
+구조체 배열 및 초기화
+```c
+struct Ex person[3] = {
+    {1, 10, "hi"},
+    {2, 20, "hello"},
+    {3, 30, "world"}
+};
+```
+
+## typedef
+자료형에게 새로운 이름을 지어주는 것
+* ex. typedef int INT;
+
+## 구조체 정의와 typedef 선언
+```c
+typedef struct name{
+    char name1[10];
+    char name2[20];
+} Name;
+```
+
+## File 개방 모드
+1. r : 읽기 (파일없으면 에러)
+2. w : 쓰기 (파일없으면 생성)
+3. a : 덧붙여 쓰기 (파일없으면 생성)
+4. r+ : 읽기/쓰기 (파일없으면 에러)
+5. w+ : 읽기/쓰기 (파일없으면 셍성)
+6. a+ : 읽기/덧붙여 쓰기 (파일없으면 생성)
+
+## 개행 \n
+1. Window : \r\n
+2. Mac : \r
+3. Unix : \n
+
+## 동적할당
+
+### 메모리의 구성
+1. 코드 영역 : 프로그램의 코드가 저장되는 메모리 공간
+2. 데이터 영역 : 전역변수와 static 변수가 할당되는 공간 (프로그램 종료 시까지 남아있게 된다)
+3. 힙 영역 : 사용자에 의해 메모리 공간이 동적으로 할당되고 해제
+4. 스택 영역 : 지역변수와 매개변수가 저장되는 메모리 공간 (함수를 빠져나가면 소멸)
+
+### malloc
+```c
+#include <stdio.h>
+void * malloc(size_t size);
+void free(void * ptr);
+````
+malloc Ex
+```c
+void * ptr = malloc(4); // 4Byte 할당
+free(ptr); // 4Byte 매모리 해제
+```
+
+### realloc
+```c
+#include <stdio.h>
+void * realloc(void * ptr, size_t size);
+````
+realloc Ex
+```c
+int * arr = (int *)malloc(sizeof(int)*3); // 길이가 3인 int형 배열 할당
+arr = (int *)realloc(arr, sizeof(int)*5) // 길이가 5인 int형 배열로 확장!
+```
