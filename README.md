@@ -319,3 +319,63 @@ realloc Ex
 int * arr = (int *)malloc(sizeof(int)*3); // 길이가 3인 int형 배열 할당
 arr = (int *)realloc(arr, sizeof(int)*5) // 길이가 5인 int형 배열로 확장!
 ```
+
+## 자주 사용하는 함수 모음
+
+### memset ( memory + setting )
+- 원형
+    - void* memset(void* ptr, int value, size_t num);
+    - void* ptr : 세팅하고자 하는 메모리의 시작 주소.
+    - value : 메모리에 세팅하고자 하는 값
+        - ** int 타입으로 받지만 내부에서는 unsigned char 로 변환되어서 저장 **
+    - size_t num : 길이
+```c
+// EX
+
+#include<string.h> // #include<memory.h> 도 괜찮습니다.
+
+char arr[] = "blockdmask";
+memset(arr, 'c', 5 * sizeof(char));
+print(arr);
+```
+
+### strcpy ( string copy )
+- 원형
+    - char *strcpy(char *_Dest, char const *_Source);
+```c
+#define _CRT_SECURE_NO_WARNINGS    // strcpy 보안 경고로 인한 컴파일 에러 방지
+#include <stdio.h>
+#include <string.h>    // strcpy 함수가 선언된 헤더 파일
+
+int main()
+{
+    char s1[10] = "Hello";    // 크기가 10인 char형 배열을 선언하고 문자열 할당
+    char s2[10];              // 크기가 10인 char형 배열을 선언
+
+    strcpy(s2, s1);        // s1의 문자열을 s2로 복사
+    
+    printf("%s\n", s2);    // Hello
+
+    return 0;
+}
+```
+
+### strcmp ( string compare )
+- 원형
+    - int strcmp(const *_Str1, char const *_Str2);
+```c
+#include <stdio.h>
+#include <string.h>    // strcmp 함수가 선언된 헤더 파일
+
+int main()
+{
+    char s1[10] = "Hello";
+    char *s2 = "Hello";
+
+    int ret = strcmp(s1, s2);    // 두 문자열이 같은지 문자열 비교
+
+    printf("%d\n", ret);         // 0: 두 문자열이 같으면 0
+
+    return 0;
+}
+```
